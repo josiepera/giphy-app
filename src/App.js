@@ -3,6 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      gif: ""
+    }
+  }
+
+  gifApi(){
+    let url = "https://api.giphy.com/v1/gifs/search?api_key=Gs5LTAuwlKWcKL8jl599o8T1Q1X9V1x7&q=giphy&limit=25&offset=0&rating=G&lang=en"
+    fetch(url)
+      .then( res => res.json() )
+      .then( data => {
+        this.setState(prevState => ({
+          gif: data.data
+        }))
+      })
+  }
+
+handleSubmit(){
+
+}
+
+handleChange(){
+
+}
+
   render() {
     return (
       <div className="App">
