@@ -9,9 +9,10 @@ class App extends Component {
     super(props)
     this.state = {
       url: "",
-
+      title:""
       //original_url
     }
+     this.handleClick = this.handleClick.bind(this)
   }
 
 handleClick(){
@@ -21,20 +22,33 @@ handleClick(){
     .then( data => {
     this.setState(prevState => ({
       url: data.data.image_original_url,
-
+      title: data.data.title
       }))
     })
 
 }
 
+// componentDidMount(){
+//   setTimeout(() => {
+//     this.setState(prevState => ({
+//       isLoading: false
+//     }))
+//   }, 3000)
+//   }
 
   render() {
-    console.log(this.state)
+    // if(this.state.isLoading) {
+    //   return(
+    //     <h3> Loading, wait! wait! wait!</h3>
+    //     )
+    // }
     return (
       <div className="Gif-App">
         <h1> Giphy Generator </h1>
         <button onClick = { () => this.handleClick()}>Random GIF</button>
-        <Gif url={this.state.url}/>
+        <Gif url={this.state.url} title={this.state.title}/>
+        <h3 title={this.state.title}>{this.state.title}</h3>
+        <iframe src={this.state.url}/>
       </div>
     );
   }
