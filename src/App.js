@@ -5,12 +5,13 @@ import Gif from './components/Gif'
 
 
 class App extends Component {
-  constructor(props){
+
+constructor(props){
     super(props)
     this.state = {
       url: "",
-      title:""
-      //original_url
+      title:"",
+      isLoading: true
     }
      this.handleClick = this.handleClick.bind(this)
   }
@@ -28,20 +29,20 @@ handleClick(){
 
 }
 
-// componentDidMount(){
-//   setTimeout(() => {
-//     this.setState(prevState => ({
-//       isLoading: false
-//     }))
-//   }, 3000)
-//   }
+componentDidMount(){
+  setTimeout(() => {
+    this.setState(prevState => ({
+      isLoading: false
+    }))
+  }, 3000)
+  }
 
   render() {
-    // if(this.state.isLoading) {
-    //   return(
-    //     <h3> Loading, wait! wait! wait!</h3>
-    //     )
-    // }
+    if(this.state.isLoading) {
+      return(
+        <h3> Loading, wait! wait! wait!</h3>
+        )
+    }
     return (
       <div className="Gif-App">
         <h1> Giphy Generator </h1>
