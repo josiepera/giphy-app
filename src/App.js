@@ -22,8 +22,9 @@ handleClick(){
     .then( res => res.json() )
     .then( data => {
     this.setState(prevState => ({
-      url: data.data.image_original_url,
-      title: data.data.title
+      url: data.data.embed_url,
+      title: data.data.title,
+      isLoading: false
       }))
     })
 
